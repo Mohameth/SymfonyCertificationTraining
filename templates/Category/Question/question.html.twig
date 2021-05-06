@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question {{ category }}{% endblock %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block body %}
+  <div class="main-wrapper">
+
+    <h1>{{ question }}</h1>
+
+    <h2> Choose an aswer below: </h2>
+
+    {% for answer in question.answers %}
+
+      <h4>{{ answer }}</h4>
+    {% endfor %}
+
+  </div>
+{% endblock %}

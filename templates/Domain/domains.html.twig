@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All domains{% endblock %}
+
+{% block body %}
+  <h2>Hello, what will you work on today?</h2>
+
+  {% if domains|length > 0 %}
+    {% for domain in domains %}
+      <h4>{{ path('categories') }}</h4>
+    {% endfor %}
+  {% else %}
+    <div>No domain created yet. Please contact Mr. Admin.</div>
+  {% endif %}
+{% endblock %}
+

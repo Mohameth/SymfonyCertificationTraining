@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All Questions{% endblock %}
+
+{% block stylesheets %} {{ parent() }} {% endblock %}
+
+{% block body %}
+  <div class="main-wrapper">
+
+    <h2> Here is your advancement in this category: </h2>
+
+    {% if questions|length > 0 %}
+      {% for question in questions %}
+
+        <h4><a href="{{ path('question', {categoryId: category.id, questionId: question.id}) }}">{{ question.name }}</a></h4>
+      {% endfor %}
+    {% else %}
+      <div>No questions brother. Tough life. </div>
+    {% endif %}
+
+  </div>
+{% endblock %}
