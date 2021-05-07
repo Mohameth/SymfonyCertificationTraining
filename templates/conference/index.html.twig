@@ -8,10 +8,26 @@
 
 
 <div class="main-wrapper">
-  <h1>Hello Awesome user! ✅</h1>
+  <h1>Train. Learn. Get a Symfony certification.</h1>
 
-  <h3>Get ready for the certification in no time, yeaaa baby!</h3>
+  <h3>Get ready for the certification in no time:</h3>
 
-  <h4><a href="{{ path('categories') }}">Let's start this shit!!! </a></h4>
+  <div class="home-buttons">
+    <button class="home-button">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+      <a class="button-text" href="{{ path('categories') }}">Choose a category</a>
+    </button>
+  </div>
+
+  <div class="home-buttons">
+    <button class="home-button">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+      <a class="button-text" href="{{ path('categories') }}">Pass the whole test</a>
+    </button>
+  </div>
 </div>
 {% endblock %}

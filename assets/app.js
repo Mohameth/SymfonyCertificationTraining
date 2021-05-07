@@ -6,7 +6,7 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
@@ -27,5 +27,5 @@ import navHandler from './navHandler';
 
 
 $(document).ready(function() {
-  $('nav > ol').append('<li>'+navHandler()+'</li>');
+  //$('nav > ul').append('<li>'+navHandler()+'</li>');
 });
