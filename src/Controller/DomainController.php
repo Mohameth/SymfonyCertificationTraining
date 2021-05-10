@@ -14,12 +14,19 @@ use Twig\Environment;
 
 class DomainController extends AbstractController
 {
+    private $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     /**
      * @Route("/domains", name="categories")
      */
-    public function showDomains(Environment $twig, CategoryRepository $categoryRepository): Response
+    public function showDomains(CategoryRepository $categoryRepository): Response
     {
-        return new Response($twig->render('Category/categories.html.twig', [
+        return new Response($this->twig->render('Category/categories.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]));
     }

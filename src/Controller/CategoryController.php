@@ -20,18 +20,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class CategoryController extends AbstractController
 {
-
     /**
      * TODO: On Category page add progression, button random questions
      * TODO:
      */
 
+    private $twig;
+
+    public function __construct(Environment $twig)
+    {
+        $this->twig = $twig;
+    }
+
     /**
      * @Route("/categories", name="categories")
      */
-    public function showCategories(Environment $twig, CategoryRepository $categoryRepository): Response
+    public function showCategories(CategoryRepository $categoryRepository): Response
     {
-        return new Response($twig->render('Category/categories.html.twig', [
+        return new Response($this->twig->render('Category/categories.html.twig', [
             'categories' => $categoryRepository->findAll(),
         ]));
     }
@@ -39,9 +45,9 @@ class CategoryController extends AbstractController
     /**
      * @Route("/category/{id}", name="category")
      */
-    public function showCategory(Environment $twig, Category $category, QuestionRepository $questionRepository): Response
+    public function showCategory(Category $category, QuestionRepository $questionRepository): Response
     {
-        return new Response($twig->render('Category/Question/questions.html.twig', [
+        return new Response($this->twig->render('Category/Question/questions.html.twig', [
             'category'  => $category,
             'questions' => $questionRepository->findAll(), //By(['category' => $category])
         ]));
@@ -53,9 +59,9 @@ class CategoryController extends AbstractController
      * @ParamConverter("category", options={"mapping": {"categoryId": "id"}})
      * @ParamConverter("question", options={"mapping": {"questionId": "id"}})
      */
-    public function showQuestion(Environment $twig, Category $category, Question $question): Response
+    public function showQuestion(Category $category, Question $question): Response
     {
-        return new Response($twig->render('Category/Question/question.html.twig', [
+        return new Response($this->twig->render('Category/Question/question.html.twig', [
             'category' => $category,
             'question' => $question,
         ]));
